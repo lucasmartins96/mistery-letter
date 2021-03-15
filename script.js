@@ -7,7 +7,7 @@ function eraseLetter() {
 * Link: https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/regular-expressions/using-the-test-method
 */
 
-function isInvalidInput(txtInput) {
+function isEmptyInput(txtInput) {
   if (txtInput === '') {
     return true;
   }
@@ -24,8 +24,8 @@ function getRandomInt(min, max) {
 
 function pickGroups(obj) {
   const classesGroups = Object.keys(obj);
-  const amount = getRandomInt(0, 3);
-  if (amount === 1) {
+  const amountToBeSubtracted = getRandomInt(0, 3);
+  if (amountToBeSubtracted === 1) {
     const randomIndex = getRandomInt(0, 3);
     classesGroups.splice(randomIndex, 1);
   } else {
@@ -60,7 +60,7 @@ function createLetter() {
   const txtLetter = document.getElementById('carta-texto').value;
   const letterContainer = document.getElementById('carta-gerada');
   const counterLetter = document.getElementById('carta-contador');
-  if (!isInvalidInput(txtLetter)) {
+  if (!isEmptyInput(txtLetter)) {
     const wordSplited = txtLetter.split(' ');
     for (let index = 0; index < wordSplited.length; index += 1) {
       const wordSpan = drawClasses();

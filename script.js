@@ -83,13 +83,15 @@ function changeClass(event) {
     sizeGroup: ['medium', 'big', 'reallybig'],
     rotationAndInclinationGroup: ['rotateleft', 'rotateright', 'skewleft', 'skewright'],
   };
+  const className = [];
   const drawnGroups = pickGroups(spanClasses);
   for (let index = 0; index < drawnGroups.length; index += 1) {
     const currentGroup = drawnGroups[index];
     const randomIndex = getRandomInt(0, spanClasses[currentGroup].length);
     const drawnClass = spanClasses[currentGroup][randomIndex];
-    event.target.classList.toggle(drawnClass);
+    className.push(drawnClass);
   }
+  event.target.className = className.join(' ');
 }
 
 function addEventSpan() {

@@ -8,6 +8,9 @@ function eraseLetter() {
 */
 
 function isInvalidInput(txtInput) {
+  if (txtInput === '') {
+    return true;
+  }
   const testRegex = /^\s+/;
   return testRegex.test(txtInput);
 }
@@ -73,3 +76,24 @@ function addEventCreateLetterBtn() {
   btnCreateLetter.addEventListener('click', createLetter);
 }
 addEventCreateLetterBtn();
+
+function changeClass(event) {
+  const spanClasses = {
+    styleGroup: ['newspaper', 'magazine1', 'magazine2'],
+    sizeGroup: ['medium', 'big', 'reallybig'],
+    rotationAndInclinationGroup: ['rotateleft', 'rotateright', 'skewleft', 'skewright'],
+  };
+  const drawnGroups = pickGroups(spanClasses);
+  for (let index = 0; index < drawnGroups.length; index += 1) {
+    const currentGroup = drawnGroups[index];
+    const randomIndex = getRandomInt(0, spanClasses[currentGroup].length);
+    const drawnClass = spanClasses[currentGroup][randomIndex];
+    event.target.classList.toggle(drawnClass);
+  }
+}
+
+function addEventSpan() {
+  const letterContainer = document.getElementById('carta-gerada');
+  letterContainer.addEventListener('click', changeClass);
+}
+addEventSpan();

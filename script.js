@@ -59,6 +59,7 @@ function createLetter() {
   eraseLetter();
   const txtLetter = document.getElementById('carta-texto').value;
   const letterContainer = document.getElementById('carta-gerada');
+  const counterLetter = document.getElementById('carta-contador');
   if (!isInvalidInput(txtLetter)) {
     const wordSplited = txtLetter.split(' ');
     for (let index = 0; index < wordSplited.length; index += 1) {
@@ -66,6 +67,7 @@ function createLetter() {
       wordSpan.innerText = wordSplited[index];
       letterContainer.appendChild(wordSpan);
     }
+    counterLetter.innerText = `${wordSplited.length}`;
   } else {
     letterContainer.innerText = 'Por favor, digite o conteúdo da carta.';
   }
